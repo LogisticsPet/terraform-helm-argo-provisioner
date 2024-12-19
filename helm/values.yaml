@@ -1,0 +1,10 @@
+appName: null
+argoNamespace: null
+projectName: null
+destination:
+  server: https://kubernetes.default.svc
+  namespace: '*'
+github:
+  repo: null
+  org: null
+  token: null
