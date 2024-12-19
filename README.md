@@ -10,14 +10,15 @@ Terraform module to create ArgoCD resources.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.10.2 |
-| <a name="requirement_local"></a> [local](#requirement\_local) | 2.5.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.10.3 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.81.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.16.1 |
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_github"></a> [github](#provider\_github) | 6.4.0 |
-| <a name="provider_local"></a> [local](#provider\_local) | 2.5.1 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.81.0 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | 2.16.1 |
 ## Modules
 
 No modules.
@@ -25,20 +26,20 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [github_repository.gitops_repo](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository) | resource |
-| [github_repository_file.core_files](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository_file) | resource |
-| [github_repository_file.readme](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository_file) | resource |
-| [local_file.template_files](https://registry.terraform.io/providers/hashicorp/local/2.5.1/docs/data-sources/file) | data source |
+| [helm_release.argo-provisioner](https://registry.terraform.io/providers/hashicorp/helm/2.16.1/docs/resources/release) | resource |
+| [aws_eks_cluster.this](https://registry.terraform.io/providers/hashicorp/aws/5.81.0/docs/data-sources/eks_cluster) | data source |
+| [aws_eks_cluster_auth.this](https://registry.terraform.io/providers/hashicorp/aws/5.81.0/docs/data-sources/eks_cluster_auth) | data source |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_platform"></a> [platform](#input\_platform) | Stack name | `string` | n/a | yes |
-| <a name="input_stage"></a> [stage](#input\_stage) | Stack name | `string` | `""` | no |
-| <a name="input_template_variables"></a> [template\_variables](#input\_template\_variables) | Set of variables for templates | `map(string)` | <pre>{<br/>  "argoNamespace": "argocd",<br/>  "projectName": "project",<br/>  "serviceAccountName": "test"<br/>}</pre> | no |
+| <a name="input_argo_namespace"></a> [argo\_namespace](#input\_argo\_namespace) | Namespace of ArgoCD Helm chart deployment. | `string` | n/a | yes |
+| <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of EKS cluster. | `string` | n/a | yes |
+| <a name="input_github_org"></a> [github\_org](#input\_github\_org) | n/a | `string` | `"GitHub Organization name"` | no |
+| <a name="input_github_token"></a> [github\_token](#input\_github\_token) | n/a | `string` | `"Github token"` | no |
+| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | Argo CD project name. | `string` | `"default"` | no |
+| <a name="input_repo_url"></a> [repo\_url](#input\_repo\_url) | GitOps Repo url. | `string` | n/a | yes |
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_http_url"></a> [http\_url](#output\_http\_url) | Http url of created repository |
+No outputs.
 <!-- END_TF_DOCS -->
