@@ -7,24 +7,41 @@ variable "argo_namespace" {
   type        = string
   description = "Namespace of ArgoCD Helm chart deployment."
 }
-variable "repo_url" {
-  type        = string
-  description = "GitOps Repo url."
+variable "applications" {
+  description = "Argo CD bootstrap applications"
+  type = list(object({
+    name = string
+    path = string
+    wave = number
+    destination = object({
+      server    = string
+      namespace = string
+    })
+    git = object({
+      repository   = string,
+      organization = string
+      token        = string
+    })
+  }))
 }
 
-variable "project_name" {
-  type        = string
-  description = "Argo CD project name."
-  default     = "default"
+variable "project" {
+  description = "Argo CD project details"
+  type = object({
+    name        = string,
+    description = string
+    destinations = list(object({
+      server    = string
+      namespace = string
+    }))
+  })
 }
 
-variable "github_org" {
-  type    = string
-  default = "GitHub Organization name"
-}
 
-variable "github_token" {
-  sensitive = true
-  type      = string
-  default   = "Github token"
+variable "helm_repos" {
+  description = "Helm Repositories to create."
+  type = list(object({
+    name = string,
+    url  = string
+  }))
 }
