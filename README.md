@@ -14,7 +14,7 @@ Terraform module to create ArgoCD resources.
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.82.2 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.17.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.35.1 |
-| <a name="requirement_local"></a> [local](#requirement\_local) | 2.5.1 |
+| <a name="requirement_local"></a> [local](#requirement\_local) | 2.5.2 |
 ## Providers
 
 | Name | Version |
