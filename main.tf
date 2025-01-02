@@ -13,8 +13,8 @@ resource "kubernetes_manifest" "argo_cd_app_project" {
       namespace = var.argo_namespace
     }
     spec = {
-      description = var.project.description
-      sourceRepos = [for app in var.applications : app.git.repository]
+      description  = var.project.description
+      sourceRepos  = [for app in var.applications : app.git.repository]
       destinations = var.project.destinations
       clusterResourceWhitelist = [
         {

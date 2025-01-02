@@ -42,7 +42,7 @@ No modules.
 | <a name="input_argo_namespace"></a> [argo\_namespace](#input\_argo\_namespace) | Namespace of ArgoCD Helm chart deployment. | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of EKS cluster. | `string` | n/a | yes |
 | <a name="input_helm_repos"></a> [helm\_repos](#input\_helm\_repos) | Helm Repositories to create. | <pre>list(object({<br/>    name = string,<br/>    url  = string<br/>  }))</pre> | n/a | yes |
-| <a name="input_project"></a> [project](#input\_project) | Argo CD project details | <pre>object({<br/>    name        = string,<br/>    description = string<br/>  })</pre> | n/a | yes |
+| <a name="input_project"></a> [project](#input\_project) | Argo CD project details | <pre>object({<br/>    name        = string,<br/>    description = string<br/>    destinations = list(object({<br/>      server    = string<br/>      namespace = string<br/>    }))<br/>  })</pre> | n/a | yes |
 ## Outputs
 
 No outputs.
